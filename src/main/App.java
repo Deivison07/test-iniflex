@@ -35,9 +35,40 @@ public class App {
 		ferramenta.insertFuncionario(laura);
 		ferramenta.insertFuncionario(heloisa);
 		ferramenta.insertFuncionario(lelena);
+		ferramenta.insertFuncionario(lelena);
 		
-		System.out.println("Lista de Funcionarios por Ordem Alfabetica".toUpperCase());
+		
+		
+		
+		
+		System.out.println("\nLista de Funcionarios por Ordem Alfabetica".toUpperCase());
 		System.out.println(ferramenta.getFuncionariosAlfabeticamenteByString());
+		
+		ferramenta.removeFuncionario(joao);
+		
+		System.out.println("\nFuncionario Mais Velho".toUpperCase());
+		System.out.println(ferramenta.getFuncionarioMaisVelhoByString());
+		
+		int mes = 10;
+		System.out.println(("\nFuncionario que faz aniversário mês "+mes).toUpperCase());
+		System.out.println(ferramenta.getFuncionariosAniversarioByString(10));
+		
+		
+		System.out.println(("\nDando 10% de aumento salarial para todos os funcionarios").toUpperCase());
+		ferramenta.aumentarSalarioAll( new BigDecimal(1.1));
+		System.out.println(ferramenta.getAllFuncionariosByString());
+		
+		
+		System.out.println(("\nTotal de salarios dos funcionarios").toUpperCase());
+		System.out.println(ferramenta.getTotalSalariosByString());
+		
+		
+		System.out.println(("\nSalarios minimos de cada funcionario").toUpperCase());
+		System.out.println(ferramenta.getSalarioComparado(new BigDecimal(1212.00)));
+		
+		String funcao = "Operador";
+		System.out.println(("\nFuncionarios por função ["+funcao+"]").toUpperCase());
+		System.out.println(ferramenta.getFuncionariosPorFuncao(funcao));
 		
 		
 		

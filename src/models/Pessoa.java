@@ -32,7 +32,7 @@ public class Pessoa {
     @Override
     public String toString() {
         return "Pessoa{" +
-                "nome='" + this.getNome() + '\'' +
+                "nome='" + this.getNome() +
                 ", nascimento=" + this.getNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
                 '}';
     }

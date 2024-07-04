@@ -37,10 +37,10 @@ public class Funcionario extends Pessoa implements iFuncionario {
     @Override
     public String toString() {
         return "Funcionario{" +
-                "nome='" + this.getNome() + '\'' +
-                ", nascimento=" + this.getNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '\'' +
-                ", Salário= "+ this.decFormat.format(getSalario()) +'\'' +
-                ", função= "+  this.getFuncao() + '\'' +
+                "Nome='" + this.getNome() +
+                ", Nascimento=" + this.getNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+                ", Salário= "+ this.decFormat.format(this.getSalario()) +
+                ", Função= "+  this.getFuncao() +
                 '}';
     }
 	

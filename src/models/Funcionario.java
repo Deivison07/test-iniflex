@@ -1,7 +1,6 @@
 package models;
 
-import java.util.Locale;
-import java.text.NumberFormat;
+import java.text.DecimalFormat;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,12 +9,12 @@ public class Funcionario extends Pessoa implements iFuncionario {
     
 	private BigDecimal salario;
 	private String funcao;
-	private NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(Locale.getDefault());
+	private DecimalFormat decFormat = new DecimalFormat("#,###,##0.00");
 
-	public Funcionario( String nome, LocalDate nascimento, BigDecimal salario, String funcao) {
+	public Funcionario( String nome, LocalDate nascimento, BigDecimal d, String funcao) {
 		
 		super(nome, nascimento);
-		this.salario = salario;
+		this.salario = d;
 		this.funcao = funcao;
 	}
 
@@ -40,7 +39,7 @@ public class Funcionario extends Pessoa implements iFuncionario {
         return "Funcionario{" +
                 "nome='" + this.getNome() + '\'' +
                 ", nascimento=" + this.getNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '\'' +
-                ", Salário= "+ this.formatoMoeda.format(getSalario()) +
+                ", Salário= "+ this.decFormat.format(getSalario()) +'\'' +
                 ", função= "+  this.getFuncao() + '\'' +
                 '}';
     }

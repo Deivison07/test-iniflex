@@ -1,5 +1,5 @@
 # TESTE PRÁTICO PROGRAMAÇÃO
-
+![imageProject](imageProject.jpg)
 ## Descrição do Projeto
 
 Este projeto em Java simula a gestão de funcionários de uma indústria, atendendo aos seguintes requisitos:

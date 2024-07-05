@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 import models.Funcionario;
 import models.ListaFuncionarios;
+import excep.ListaVaziaException;
+import excep.MesInvalidoExeption;
 
 public class Uttils {
 
@@ -37,6 +39,7 @@ public class Uttils {
 	
 	
 	public void insertFuncionario(Funcionario funcionario) {
+
 		
 		if(!this.listaFuncionariosPorFuncao.containsKey(funcionario.getFuncao())) {
 			ListaFuncionarios tempList = new ListaFuncionarios();
@@ -76,7 +79,12 @@ public class Uttils {
 		this.listaFuncionariosPorFuncao.get(funcionario.getFuncao()).list.get(funcionario.getNome()).setSalario(novoSalario);
 	}
 	
-	public String getFuncionariosAniversarioByString(int mes) {
+	public String getFuncionariosAniversarioByString(int mes) throws MesInvalidoExeption {
+
+		if ((mes < 1) || (mes > 12)){
+				throw new MesInvalidoExeption("mês inválido");
+			}
+
 		concatenaListas();
 		StringBuilder listaFuncionariosString = new StringBuilder();
 		for(Funcionario funcionario : this.listaFuncionarios.values()){
@@ -160,9 +168,14 @@ public class Uttils {
 	}
 	
 	
-	public String getFuncionariosPorFuncao(String funcao) {
+	public String getFuncionariosPorFuncao(String funcao) throws ListaVaziaException {
 		StringBuilder listaFuncionariosString = new StringBuilder();
 		ListaFuncionarios listaFuncionarios = this.listaFuncionariosPorFuncao.get(funcao);
+		
+		if(listaFuncionarios == null) {
+			throw new ListaVaziaException("Lista de funcionarios não contem esta função");
+		}
+		
 		for(Funcionario funcionarios : listaFuncionarios.list.values()) {
 			listaFuncionariosString.append(funcionarios.toString()+"\n");
 		}

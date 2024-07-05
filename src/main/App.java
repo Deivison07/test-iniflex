@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import excep.ListaVaziaException;
+import excep.MesInvalidoExeption;
 import models.Funcionario;
 
 public class App {
@@ -51,7 +53,13 @@ public class App {
 		
 		int mes = 10;
 		System.out.println(("\nFuncionario que faz aniversário mês "+mes).toUpperCase());
-		System.out.println(ferramenta.getFuncionariosAniversarioByString(10));
+		
+		try {
+			System.out.println(ferramenta.getFuncionariosAniversarioByString(mes));
+		} catch (MesInvalidoExeption e) {
+			System.err.println(e);
+		}
+		
 		
 		
 		System.out.println(("\nDando 10% de aumento salarial para todos os funcionarios").toUpperCase());
@@ -66,16 +74,19 @@ public class App {
 		System.out.println(("\nSalarios minimos de cada funcionario").toUpperCase());
 		System.out.println(ferramenta.getSalarioComparado(new BigDecimal(1212.00)));
 		
-		String funcao = "Operador";
-		System.out.println(("\nFuncionarios por função ["+funcao+"]").toUpperCase());
-		System.out.println(ferramenta.getFuncionariosPorFuncao(funcao));
 		
 		
-		
-		
+		String funcao = "Eletricista";
+		try {
+			
+			System.out.println(("\nFuncionarios por função ["+funcao+"]").toUpperCase());
+			System.out.println(ferramenta.getFuncionariosPorFuncao(funcao));
+			
+		} catch (ListaVaziaException e) {
+			System.err.println(e);
+		}
 	}
 		
-
 	public static void main(String[] args) {
 		run1();
 	}
